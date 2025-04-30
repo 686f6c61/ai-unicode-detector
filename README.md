@@ -7,6 +7,12 @@
 
 Herramienta web para detectar, analizar y visualizar caracteres Unicode invisibles en texto. Estos caracteres sin representación visual suelen ser insertados inadvertidamente por modelos de IA durante la generación de texto y pueden causar problemas en ciertos contextos.
 
+![Captura de pantalla de la aplicación](media/image.png)
+
+## 🎬 Demostración
+
+[Ver video de demostración](media/poc.mp4)
+
 ## 🔍 ¿Por qué detectar caracteres invisibles?
 
 Los modelos de IA como GPT, Claude, Llama y otros suelen insertar caracteres invisibles en sus respuestas por varias razones:
