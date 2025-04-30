@@ -11,7 +11,7 @@ Herramienta web para detectar, analizar y visualizar caracteres Unicode invisibl
 
 ## 🎬 Demostración
 
-[Ver video de demostración](media/poc.mp4)
+![Demostración del funcionamiento](media/poc.gif)
 
 ## 🔍 ¿Por qué detectar caracteres invisibles?
 
