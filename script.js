@@ -46,7 +46,8 @@ const patterns = [
   { code: '\u2064', name: 'Invisible Plus (U+2064)' },
   { code: '\u034F', name: 'Combining Grapheme Joiner (U+034F)' },
   { code: '\u061C', name: 'Arabic Letter Mark (U+061C)' },
-  { code: '\u00AD', name: 'Soft Hyphen (U+00AD)' }
+  { code: '\u00AD', name: 'Soft Hyphen (U+00AD)' },
+  { code: '\u2009', name: 'Thin Space (U+2009)' }
 ];
 
 // Almacena las posiciones de los caracteres invisibles

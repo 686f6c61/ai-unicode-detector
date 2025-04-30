@@ -67,6 +67,7 @@ Los modelos de IA como GPT, Claude, Llama y otros suelen insertar caracteres inv
 | U+034F | Combining Grapheme Joiner | Une grafemas o unidades visuales en escrituras complejas. | [Unicode.org](https://www.unicode.org/charts/PDF/U0300.pdf) |
 | U+061C | Arabic Letter Mark | Controla el comportamiento de texto árabe en entornos bidireccionales. | [Unicode.org](https://www.unicode.org/charts/PDF/U0600.pdf) |
 | U+00AD | Soft Hyphen | Guión invisible que solo aparece cuando una palabra debe cortarse al final de línea. | [Wikipedia](https://en.wikipedia.org/wiki/Soft_hyphen) |
+| U+2009 | Thin Space | Espacio fino, más estrecho que un espacio normal pero visible. Usado en tipografía para separación precisa. | [Unicode.org](https://www.unicode.org/charts/PDF/U2000.pdf) |
 
 ## 🔧 Implementación técnica
 
