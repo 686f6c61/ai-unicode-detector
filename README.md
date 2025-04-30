@@ -109,6 +109,14 @@ La detección de caracteres invisibles puede ayudar a identificar contenido gene
 
 Este proyecto está licenciado bajo la Licencia MIT. Consulte el archivo LICENSE para más detalles.
 
+## 📰 Artículos relacionados
+
+Estos artículos refuerzan la importancia de detectar caracteres Unicode invisibles en texto generado por IA:
+
+- [AI chatbots can read and write invisible text, creating an ideal covert channel](https://arstechnica.com/security/2024/10/ai-chatbots-can-read-and-write-invisible-text-creating-an-ideal-covert-channel/) - Ars Technica explica cómo los LLMs pueden interpretar y generar caracteres invisibles, creando potenciales canales encubiertos para ataques.
+- [New ChatGPT models seem to leave watermarks on text](https://www.rumidocs.com/newsroom/new-chatgpt-models-seem-to-leave-watermarks-on-text) - Análisis sobre posibles "marcas de agua" invisibles que los modelos recientes de OpenAI podrían estar insertando en sus salidas.
+- [GPT-4.1 Character Encoding Issues](https://community.openai.com/t/gpt-4-1-character-encoding-issues/1236017) - Discusión en la comunidad de OpenAI sobre problemas de codificación de caracteres en GPT-4.1.
+
 ## 👤 Autor
 
 - [686f6c61](https://github.com/686f6c61)
