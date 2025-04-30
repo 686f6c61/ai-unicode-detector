@@ -1,0 +1,497 @@
+/**
+ * Detector de Caracteres Invisibles - Estilos
+ * -----------------------------------------------------------
+ * Archivo: styles.css
+ * 
+ * Descripción:
+ * Este archivo contiene todos los estilos para la aplicación de detección
+ * de caracteres invisibles. Se ha diseñado con un enfoque minimalista
+ * utilizando principalmente blanco y negro para emular la apariencia de un
+ * bloc de notas tradicional, pero con mejoras de usabilidad y visualización.
+ * 
+ * Organización:
+ * - Estilos generales y contenedor principal
+ * - Menú de navegación y dropdowns
+ * - Editor de texto y numeración de líneas
+ * - Controles y botones de acción
+ * - Áreas de resultados y visualización
+ * - Estilos para la sección de ayuda y documentación
+ * - Iconos y elementos de interacción
+ * - Diseño responsive
+ * 
+ * Autor: 686f6c61
+ * GitHub: https://github.com/686f6c61
+ * Fecha: 2025
+ */
+
+/* ====== Estilos generales y contenedor principal ====== */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Consolas", "Courier New", monospace;
+  background: #fff;
+  color: #000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.container {
+  max-width: 800px;
+  width: 90%;
+  margin: 0 auto;
+}
+
+/* ====== Menú de navegación y dropdowns ====== */
+.menu {
+  background: #fff;
+  padding: 6px 10px;
+  border-bottom: 1px solid #000;
+  user-select: none;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  height: 30px;
+}
+
+.menu span {
+  margin-right: 20px;
+  cursor: default;
+  padding: 3px 6px;
+  display: inline-block;
+  line-height: 1.2;
+}
+
+.menu span:hover {
+  background: #f0f0f0;
+}
+
+/* Estilos para el dropdown */
+.dropdown {
+  position: relative;
+  display: inline-block;
+  margin-right: 20px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.dropdown span {
+  margin-right: 0;
+  cursor: pointer;
+  display: inline-block;
+  line-height: 1.2;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #fff;
+  min-width: 160px;
+  box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.2);
+  z-index: 10;
+  border: 1px solid #000;
+  margin-top: 0;
+  top: 100%;
+  left: 0;
+}
+
+.dropdown-content a {
+  color: #000;
+  padding: 8px 12px;
+  text-decoration: none;
+  display: block;
+  font-size: 14px;
+}
+
+.dropdown-content a:hover {
+  background-color: #000;
+  color: #fff;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.menu-item {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.menu-item span {
+  display: inline-block;
+  line-height: 1.2;
+}
+
+/* ====== Editor de texto y numeración de líneas ====== */
+.editor {
+  padding: 10px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.notepad-container {
+  display: flex;
+  position: relative;
+  border: 1px solid #000;
+  height: 300px; /* Altura fija */
+  overflow: hidden;
+}
+
+/* Numeración de líneas a la izquierda */
+.line-numbers {
+  width: 40px;
+  background: #fff;
+  border-right: 1px solid #000;
+  font-family: "Consolas", "Courier New", monospace;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #000;
+  text-align: right;
+  padding: 10px 5px 10px 0;
+  overflow: hidden;
+  user-select: none;
+  box-sizing: border-box;
+  height: 100%;
+}
+
+.line-numbers div {
+  padding-right: 5px;
+  height: 21px;
+}
+
+/* Área de texto principal */
+textarea {
+  width: 100%;
+  height: 100%;
+  border: none;
+  outline: none;
+  resize: none;
+  font-family: inherit;
+  font-size: 14px;
+  line-height: 1.5;
+  padding: 10px;
+  box-sizing: border-box;
+  background: #fff;
+  overflow-y: auto;
+}
+
+/* Efecto de flash para selección */
+@keyframes flash-animation {
+  0%, 100% { background: #fff; color: #000; }
+  25%, 75% { background: #000; color: #fff; }
+  50% { background: #444; color: #fff; }
+}
+
+textarea.flash-selection {
+  animation: flash-animation 1.5s 1;
+}
+
+/* Barra de estadísticas */
+.stats-bar {
+  display: flex;
+  background: #fff;
+  border: 1px solid #000;
+  border-top: none;
+  padding: 5px 10px;
+  font-size: 12px;
+  justify-content: space-between;
+}
+
+/* ====== Controles y botones de acción ====== */
+.button-group {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+  align-items: center;
+}
+
+@media screen and (max-width: 600px) {
+  .button-group {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .action-button {
+    width: 100%;
+  }
+}
+
+button {
+  margin: 0;
+  padding: 8px 16px;
+  font-size: 14px;
+  cursor: pointer;
+  background: #000;
+  color: white;
+  border: 1px solid #000;
+  transition: all 0.2s ease;
+}
+
+button:hover {
+  background: #333;
+}
+
+/* Botón principal con texto e icono */
+.action-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-width: 240px;
+}
+
+/* Botones de solo icono */
+.icon-only-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  width: 40px;
+  height: 40px;
+  border-radius: 4px;
+}
+
+.icon-only-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+/* Iconos dentro de botones */
+.btn-icon {
+  width: 24px;
+  height: 24px;
+  fill: currentColor;
+}
+
+/* Icono para copiar informe en el footer */
+.icon-button {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  color: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon-button:hover {
+  color: #333;
+}
+
+.icon-button .icon {
+  transition: transform 0.2s ease;
+}
+
+.icon-button:hover .icon {
+  transform: scale(1.2);
+}
+
+/* ====== Áreas de resultados y visualización ====== */
+.result, .preview, .helpArea, .footer {
+  margin-top: 12px;
+  font-size: 14px;
+  background: #fff;
+  padding: 10px;
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid #000;
+}
+
+.result ul {
+  padding-left: 20px;
+}
+
+.result li {
+  margin-bottom: 8px;
+}
+
+.char-name {
+  font-weight: bold;
+}
+
+/* Botones de posición para navegar a caracteres invisibles */
+.position-button {
+  margin: 0 2px;
+  padding: 2px 5px;
+  font-size: 10px;
+  background: #000;
+  color: #fff;
+  border: 1px solid #000;
+  cursor: pointer;
+  border-radius: 3px;
+}
+
+.position-button:hover {
+  background: #fff;
+  color: #000;
+}
+
+/* Área de vista previa */
+.preview {
+  white-space: pre-wrap;
+  font-family: inherit;
+  max-height: 200px;
+  overflow: auto;
+}
+
+/* Estilo para caracteres invisibles resaltados */
+.highlight {
+  display: inline-block;
+  background: #000;
+  color: #fff;
+  border: 2px solid #000;
+  padding: 0 4px;
+  margin: 0 2px;
+  font-weight: bold;
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.highlight:hover {
+  transform: scale(1.1);
+}
+
+.highlight:after {
+  content: "⚠";
+  position: absolute;
+  top: -10px;
+  right: -5px;
+  font-size: 10px;
+  background: #fff;
+  color: #000;
+  border: 1px solid #000;
+  border-radius: 50%;
+  width: 12px;
+  height: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ====== Estilos para la sección de ayuda y documentación ====== */
+.helpArea {
+  display: none;
+}
+
+.helpArea h3 {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #000;
+  padding-bottom: 5px;
+}
+
+.helpArea ol, .helpArea ul {
+  margin-top: 5px;
+  padding-left: 25px;
+}
+
+.helpArea li {
+  margin-bottom: 5px;
+}
+
+/* Tabla de caracteres Unicode */
+.char-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 15px 0;
+}
+
+.char-table th, .char-table td {
+  border: 1px solid #000;
+  padding: 6px 8px;
+  text-align: left;
+}
+
+.char-table th {
+  background: #000;
+  color: #fff;
+}
+
+.char-table tr:nth-child(even) {
+  background: #f0f0f0;
+}
+
+.char-table td:first-child {
+  font-weight: bold;
+  font-family: monospace;
+}
+
+.clickable {
+  cursor: pointer;
+  text-decoration: underline;
+  user-select: all;
+}
+
+.clickable:hover {
+  background-color: #000;
+  color: #fff;
+}
+
+/* ====== Pie de página con iconos sociales ====== */
+.footer {
+  text-align: center;
+  font-size: 12px;
+  margin-top: 20px;
+  padding: 15px 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.footer p {
+  margin: 0 0 10px 0;
+}
+
+.footer a {
+  color: #000;
+  text-decoration: none;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+}
+
+/* Iconos sociales y botones de acción */
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 5px;
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+  transition: transform 0.2s ease;
+}
+
+.social-icons a:hover .icon,
+.icon-button:hover .icon {
+  transform: scale(1.2);
+}
+
+/* Notificación para copiar informe */
+.copy-notification {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #000;
+  color: #fff;
+  padding: 10px 15px;
+  border-radius: 4px;
+  font-size: 14px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.3s, transform 0.3s;
+  z-index: 999;
+}
+
+.copy-notification.show {
+  opacity: 1;
+  transform: translateY(0);
+} 

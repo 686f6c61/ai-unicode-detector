@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<!--
+/**
+ * Detector de Caracteres Invisibles - Interfaz de Usuario
+ * -----------------------------------------------------------
+ * Archivo: index.html
+ * 
+ * Descripción:
+ * Interfaz principal de la herramienta para detectar caracteres invisibles
+ * en textos generados por modelos de IA. La aplicación utiliza HTML5, CSS3 y
+ * JavaScript vanilla para proporcionar una experiencia similar a un bloc de notas
+ * con funcionalidades avanzadas de detección.
+ * 
+ * Estructura:
+ * - Menú de navegación tipo bloc de notas con opciones de Archivo y Ayuda
+ * - Editor de texto con numeración de líneas
+ * - Contador de caracteres y palabras
+ * - Sistema de detección de caracteres Unicode invisibles
+ * - Visualización de resultados con referencia a posiciones
+ * - Documentación completa de caracteres Unicode detectables
+ * 
+ * Autor: 686f6c61
+ * GitHub: https://github.com/686f6c61
+ * Twitter: https://x.com/hex686f6c61
+ * Fecha: Abril 2025
+ */
+-->
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Detector de caracteres invisibles en texto: identifica y resalta espacios de ancho cero, marcas de dirección y otros símbolos Unicode ocultos insertados por modelos de IA.">
+  <meta name="keywords" content="caracteres invisibles, Unicode, Zero Width Space, IA, OpenAI, detector">
+  <meta name="author" content="686f6c61">
+  <title>Bloc de Notas – Detector de Caracteres Invisibles</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Barra de menú estilo bloc de notas -->
+    <div class="menu">
+      <div class="dropdown">
+        <span>Archivo</span>
+        <div class="dropdown-content">
+          <a href="https://github.com/686f6c61/artificial-intelligencetext-detector-unicode" target="_blank">Descargar repo</a>
+        </div>
+      </div>
+      <div class="menu-item">
+        <span id="helpBtn">Ayuda</span>
+      </div>
+    </div>
+
+    <div class="editor">
+      <!-- Editor con numeración de líneas -->
+      <div class="notepad-container">
+        <div id="lineNumbers" class="line-numbers"></div>
+        <textarea id="inputText" placeholder="Pega tu texto aquí..."></textarea>
+      </div>
+      
+      <!-- Estadísticas de texto -->
+      <div class="stats-bar">
+        <div class="stats-item">Caracteres: <span id="charCount">0</span></div>
+        <div class="stats-item">Palabras: <span id="wordCount">0</span></div>
+      </div>
+      
+      <!-- Controles de acción -->
+      <div class="button-group">
+        <button id="checkBtn" class="action-button">
+          <svg class="btn-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/>
+          </svg>
+          <span>Comprobar caracteres invisibles</span>
+        </button>
+        
+        <button id="clearBtn" class="icon-only-button" title="Limpiar texto">
+          <svg class="btn-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/>
+          </svg>
+        </button>
+        
+        <button id="downloadBtn" class="icon-only-button" title="Descargar informe">
+          <svg class="btn-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
+          </svg>
+        </button>
+        
+        <button id="copyReportBtn" class="icon-only-button" title="Copiar informe">
+          <svg class="btn-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/>
+          </svg>
+        </button>
+      </div>
+      
+      <!-- Áreas de resultados -->
+      <div class="result" id="resultArea"></div>
+      <div class="preview" id="previewArea" title="Vista previa con caracteres marcados"></div>
+      
+      <!-- Sección de ayuda y documentación -->
+      <div class="helpArea" id="helpArea">
+        <strong>¿Qué son los caracteres invisibles?</strong>
+        <p>Los caracteres invisibles son símbolos Unicode que no tienen representación visual (espacios de ancho cero, marcas de dirección, etc.). Se usan para controlar la dirección del texto, separar palabras sin espacio visible o unir caracteres de forma especial.</p>
+        
+        <h3>¿Por qué los modelos de IA insertan caracteres invisibles?</h3>
+        <p>Los modelos de IA avanzados como GPT, Claude, Llama y otros suelen insertar caracteres invisibles en sus respuestas por varias razones:</p>
+        <ol>
+          <li><strong>Procesamiento interno:</strong> Los modelos procesan texto en unidades llamadas "tokens". A veces, al convertir estos tokens de vuelta a texto, se introducen caracteres invisibles como artefactos del proceso.</li>
+          <li><strong>Tokenización multisistema:</strong> Para manejar diferentes idiomas y sistemas de escritura, los modelos usan marcadores de dirección (RTL/LTR) que pueden quedar en el texto final.</li>
+          <li><strong>Formateo de texto:</strong> Al generar texto con formato específico (como código, tablas o listas), pueden usar caracteres invisibles para controlar la disposición.</li>
+          <li><strong>Huellas digitales:</strong> Algunos sugieren que podrían ser marcas deliberadas para identificar el contenido generado por IA, aunque no hay confirmación oficial de esta práctica.</li>
+          <li><strong>Control del flujo de texto:</strong> Para evitar que ciertas palabras se rompan o para mantener formatos específicos, los modelos pueden usar caracteres como ZWSP (Zero Width Space).</li>
+        </ol>
+        
+        <p>Estos caracteres pueden afectar negativamente cuando:</p>
+        <ul>
+          <li>Copias código generado y no funciona correctamente</li>
+          <li>Realizas búsquedas de coincidencias exactas en texto</li>
+          <li>Comparas strings de texto en programación</li>
+          <li>Cuentas caracteres con precisión</li>
+        </ul>
+        
+        <p>Por ello, esta herramienta es útil para detectar y eliminar estos caracteres cuando transfieres contenido desde sistemas de IA a otros entornos.</p>
+        
+        <h3>Caracteres invisibles detectados por esta herramienta:</h3>
+        
+        <table class="char-table">
+          <tr>
+            <th>Código</th>
+            <th>Nombre</th>
+            <th>Descripción</th>
+          </tr>
+          <tr>
+            <td>U+200B</td>
+            <td>Zero Width Space</td>
+            <td>Espacio de ancho cero. Indica posible división de palabras sin mostrar un espacio visible.</td>
+          </tr>
+          <tr>
+            <td>U+200C</td>
+            <td>Zero Width Non-Joiner</td>
+            <td>Previene la ligadura entre caracteres que normalmente se unirían.</td>
+          </tr>
+          <tr>
+            <td>U+200D</td>
+            <td>Zero Width Joiner</td>
+            <td>Causa la unión de caracteres que normalmente no se ligarían. Usado en emojis compuestos.</td>
+          </tr>
+          <tr>
+            <td>U+FEFF</td>
+            <td>Zero Width No-Break Space</td>
+            <td>También conocido como BOM (Byte Order Mark). Indica orden de bytes en codificaciones.</td>
+          </tr>
+          <tr>
+            <td>U+2060</td>
+            <td>Word Joiner</td>
+            <td>Similar al ZWSP pero no indica división de palabras. Previene saltos entre palabras.</td>
+          </tr>
+          <tr>
+            <td>U+180E</td>
+            <td>Mongolian Vowel Separator</td>
+            <td>Separa vocales en escritura mongola tradicional.</td>
+          </tr>
+          <tr>
+            <td>U+200E</td>
+            <td>Left-to-Right Mark</td>
+            <td>Fuerza dirección de izquierda a derecha para el texto siguiente.</td>
+          </tr>
+          <tr>
+            <td>U+200F</td>
+            <td>Right-to-Left Mark</td>
+            <td>Fuerza dirección de derecha a izquierda para el texto siguiente.</td>
+          </tr>
+          <tr>
+            <td>U+202A</td>
+            <td>Left-to-Right Embedding</td>
+            <td>Establece un nuevo nivel de incrustación con dirección LTR.</td>
+          </tr>
+          <tr>
+            <td>U+202B</td>
+            <td>Right-to-Left Embedding</td>
+            <td>Establece un nuevo nivel de incrustación con dirección RTL.</td>
+          </tr>
+          <tr>
+            <td>U+202C</td>
+            <td>Pop Directional Formatting</td>
+            <td>Finaliza el último nivel de formato direccional.</td>
+          </tr>
+          <tr>
+            <td>U+202D</td>
+            <td>Left-to-Right Override</td>
+            <td>Fuerza toda la secuencia siguiente a ser tratada como LTR.</td>
+          </tr>
+          <tr>
+            <td>U+202E</td>
+            <td>Right-to-Left Override</td>
+            <td>Fuerza toda la secuencia siguiente a ser tratada como RTL.</td>
+          </tr>
+          <tr>
+            <td>U+2061</td>
+            <td>Function Application</td>
+            <td>Símbolo matemático invisible que representa la aplicación de funciones.</td>
+          </tr>
+          <tr>
+            <td>U+2062</td>
+            <td>Invisible Times</td>
+            <td>Representa una multiplicación invisible en notación matemática.</td>
+          </tr>
+          <tr>
+            <td>U+2063</td>
+            <td>Invisible Separator</td>
+            <td>Separador invisible usado en notación matemática.</td>
+          </tr>
+          <tr>
+            <td>U+2064</td>
+            <td>Invisible Plus</td>
+            <td>Representa una suma invisible en notación matemática.</td>
+          </tr>
+          <tr>
+            <td>U+034F</td>
+            <td>Combining Grapheme Joiner</td>
+            <td>Une grafemas o unidades visuales en escrituras complejas.</td>
+          </tr>
+          <tr>
+            <td>U+061C</td>
+            <td>Arabic Letter Mark</td>
+            <td>Controla el comportamiento de texto árabe en entornos bidireccionales.</td>
+          </tr>
+          <tr>
+            <td>U+00AD</td>
+            <td>Soft Hyphen</td>
+            <td>Guión invisible que solo aparece cuando una palabra debe cortarse al final de línea.</td>
+          </tr>
+        </table>
+        
+        <p>La detección de estos caracteres puede ser una forma efectiva de identificar contenido generado por IA, aunque no es concluyente por sí misma.</p>
+        <p>Herramienta desarrollada por <a href="https://github.com/686f6c61" target="_blank">686f6c61</a></p>
+      </div>
+    </div>
+
+    <!-- Pie de página con enlaces a redes sociales -->
+    <div class="footer">
+      <p>Detector de caracteres invisibles - Abril 2025</p>
+      <div class="social-icons">
+        <a href="https://github.com/686f6c61/artificial-intelligencetext-detector-unicode" target="_blank" title="GitHub">
+          <svg class="icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.387.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.756-1.333-1.756-1.09-.745.083-.73.083-.73 1.205.085 1.838 1.236 1.838 1.236 1.07 1.835 2.807 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.4 3-.405 1.02.005 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.605-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12"/>
+          </svg>
+        </a>
+        <a href="https://x.com/hex686f6c61" target="_blank" title="Twitter/X">
+          <svg class="icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
