@@ -79,7 +79,7 @@ La arquitectura del código sigue un enfoque modular con clara separación de:
 
 1. Clone este repositorio:
 ```bash
-git clone https://github.com/686f6c61/artificial-intelligencetext-detector-unicode.git
+git clone https://github.com/686f6c61/artificial-intelligence-text-detector-unicode.git
 ```
 
 2. Abra `index.html` en su navegador para comenzar a usar la aplicación.

@@ -435,7 +435,7 @@ function generateReport(charsFound) {
   
   reportContent += '\n=============================================\n';
   reportContent += 'Generado por Detector de Caracteres Invisibles\n';
-  reportContent += 'https://github.com/686f6c61/artificial-intelligencetext-detector-unicode';
+  reportContent += 'https://github.com/686f6c61/artificial-intelligence-text-detector-unicode';
   
   return reportContent;
 }
