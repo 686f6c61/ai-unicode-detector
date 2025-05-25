@@ -238,10 +238,10 @@ function checkInvisibleChars() {
       const li = document.createElement('li');
       
       // Crear elemento para cada tipo de carácter invisible
-      const charNameSpan = document.createElement('span');
-      charNameSpan.textContent = `${item.name}: ${item.count} vez${item.count > 1 ? 'es' : ''} `;
-      charNameSpan.classList.add('char-name');
-      li.appendChild(charNameSpan);
+    const charNameSpan = document.createElement('span');
+    charNameSpan.textContent = `${item.name}: ${item.count} ${item.count === 1 ? 'vez' : 'veces'} `;
+    charNameSpan.classList.add('char-name');
+    li.appendChild(charNameSpan);
       
       // Añadir indicadores de posición para cada ocurrencia
       item.positions.forEach((pos, idx) => {
