@@ -416,8 +416,8 @@ function generateReport(charsFound) {
     });
     
     // Añadir conteo por tipo
-    Object.keys(characterCounts).forEach(charName => {
-      reportContent += `- ${charName}: ${characterCounts[charName]} vez${characterCounts[charName] > 1 ? 'es' : ''}\n`;
+  Object.keys(characterCounts).forEach(charName => {
+  reportContent += `- ${charName}: ${characterCounts[charName]} veces\n`;
     });
     
     // Añadir extractos de texto con caracteres invisibles
