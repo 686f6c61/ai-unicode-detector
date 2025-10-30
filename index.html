@@ -22,7 +22,7 @@
  * Autor: 686f6c61
  * GitHub: https://github.com/686f6c61
  * Twitter: https://x.com/hex686f6c61
- * Fecha: Abril 2025
+ * Fecha: 2025
  */
 -->
 <html lang="es">
@@ -48,6 +48,9 @@
       <div class="menu-item">
         <span id="helpBtn">Ayuda</span>
       </div>
+      <div class="menu-item">
+        <span id="demoBtn">Copiar TXT DEMO</span>
+      </div>
     </div>
 
     <div class="editor">
@@ -71,19 +74,32 @@
           </svg>
           <span>Comprobar caracteres invisibles</span>
         </button>
-        
-        <button id="clearBtn" class="icon-only-button" title="Limpiar texto">
+
+        <button id="cleanBtn" class="action-button secondary" title="Eliminar caracteres invisibles del texto">
+          <svg class="btn-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M19.36 2.72l1.42 1.42-5.72 5.71c1.07 1.54 1.22 3.39.32 4.59L9.06 8.12c1.2-.9 3.05-.75 4.59.32l5.71-5.72M5.93 17.57c-2.01-2.01-3.24-4.41-3.58-6.65l4.88-2.09 7.44 7.44-2.09 4.88c-2.24-.34-4.64-1.57-6.65-3.58z"/>
+          </svg>
+          <span>Limpiar texto</span>
+        </button>
+
+        <button id="clearBtn" class="icon-only-button" title="Borrar todo el texto">
           <svg class="btn-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/>
           </svg>
         </button>
-        
+
+        <select id="exportFormat" class="export-format-selector" title="Formato de exportación">
+          <option value="txt">TXT</option>
+          <option value="json">JSON</option>
+          <option value="csv">CSV</option>
+        </select>
+
         <button id="downloadBtn" class="icon-only-button" title="Descargar informe">
           <svg class="btn-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
           </svg>
         </button>
-        
+
         <button id="copyReportBtn" class="icon-only-button" title="Copiar informe">
           <svg class="btn-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/>
@@ -93,6 +109,28 @@
       
       <!-- Áreas de resultados -->
       <div class="result" id="resultArea"></div>
+
+      <!-- Heatmap de distribución -->
+      <div class="heatmap-container" id="heatmapContainer" style="display: none;">
+        <strong>📊 Mapa de calor - Distribución de caracteres invisibles en el texto</strong>
+        <p class="heatmap-description">
+          Cada bloque representa 50 caracteres del texto original.
+          <strong>Haz clic en cualquier bloque</strong> para saltar a esa sección.
+          Los números indican cuántos caracteres invisibles hay en ese bloque.
+        </p>
+        <canvas id="heatmapCanvas"></canvas>
+        <div class="heatmap-legend">
+          <strong>Escala de densidad:</strong>
+          <span class="legend-item"><span class="legend-color" style="background: #e8e8e8;"></span> 0 - Sin caracteres</span>
+          <span class="legend-item"><span class="legend-color" style="background: #fff59d;"></span> 1 - Muy bajo</span>
+          <span class="legend-item"><span class="legend-color" style="background: #ffeb3b;"></span> 2 - Bajo</span>
+          <span class="legend-item"><span class="legend-color" style="background: #ffc107;"></span> 3 - Moderado</span>
+          <span class="legend-item"><span class="legend-color" style="background: #ff9800;"></span> 4-5 - Medio</span>
+          <span class="legend-item"><span class="legend-color" style="background: #ff5722;"></span> 6-8 - Alto</span>
+          <span class="legend-item"><span class="legend-color" style="background: #d32f2f;"></span> 9+ - Muy alto</span>
+        </div>
+      </div>
+
       <div class="preview" id="previewArea" title="Vista previa con caracteres marcados"></div>
       
       <!-- Sección de ayuda y documentación -->
@@ -121,32 +159,51 @@
         <p>Por ello, esta herramienta es útil para detectar y eliminar estos caracteres cuando transfieres contenido desde sistemas de IA a otros entornos.</p>
         
         <h3>Caracteres invisibles detectados por esta herramienta:</h3>
-        
+
+        <p><strong>NUEVO (Enero 2025):</strong> Se han añadido nuevos caracteres basados en hallazgos recientes en modelos razonadores (o3, o4-mini) y espacios Unicode adicionales.</p>
+
         <table class="char-table">
           <tr>
             <th>Código</th>
             <th>Nombre</th>
             <th>Descripción</th>
+            <th>Notas</th>
+          </tr>
+          <tr style="background: #ffffcc;">
+            <td>U+202F</td>
+            <td>Narrow No-Break Space</td>
+            <td>Espacio estrecho no separable. MUY IMPORTANTE: Reportado en modelos o3/o4-mini de OpenAI (abril 2025).</td>
+            <td><strong>NUEVO:</strong> OpenAI indicó que fue un bug de RL, posiblemente corregido.</td>
           </tr>
           <tr>
             <td>U+200B</td>
             <td>Zero Width Space</td>
             <td>Espacio de ancho cero. Indica posible división de palabras sin mostrar un espacio visible.</td>
+            <td>Muy común en todos los LLMs.</td>
           </tr>
           <tr>
             <td>U+200C</td>
             <td>Zero Width Non-Joiner</td>
             <td>Previene la ligadura entre caracteres que normalmente se unirían.</td>
+            <td>-</td>
           </tr>
           <tr>
             <td>U+200D</td>
             <td>Zero Width Joiner</td>
             <td>Causa la unión de caracteres que normalmente no se ligarían. Usado en emojis compuestos.</td>
+            <td><strong>Importante:</strong> Necesario para emojis. No siempre indica IA.</td>
           </tr>
           <tr>
             <td>U+FEFF</td>
-            <td>Zero Width No-Break Space</td>
+            <td>Zero Width No-Break Space (BOM)</td>
             <td>También conocido como BOM (Byte Order Mark). Indica orden de bytes en codificaciones.</td>
+            <td>Común en archivos con problemas de codificación.</td>
+          </tr>
+          <tr style="background: #f0f0ff;">
+            <td>U+00A0</td>
+            <td>No-Break Space</td>
+            <td>Espacio no separable. Usado en tipografía correcta para evitar saltos de línea no deseados.</td>
+            <td><strong>NUEVO:</strong> Muy común. Uso legítimo en texto bien formateado.</td>
           </tr>
           <tr>
             <td>U+2060</td>
@@ -232,8 +289,28 @@
             <td>U+2009</td>
             <td>Thin Space</td>
             <td>Espacio fino, más estrecho que un espacio normal pero visible. Usado en tipografía para separación precisa.</td>
+            <td>-</td>
+          </tr>
+          <tr style="background: #f0f0ff;">
+            <td>U+3000</td>
+            <td>Ideographic Space</td>
+            <td>Espacio de ancho completo usado en texto CJK (Chino, Japonés, Coreano).</td>
+            <td><strong>NUEVO:</strong> Común en textos asiáticos.</td>
+          </tr>
+          <tr style="background: #f0f0ff;">
+            <td>U+FE0F</td>
+            <td>Variation Selector-16</td>
+            <td>Selecciona variante emoji de un carácter. Controla la representación visual.</td>
+            <td><strong>NUEVO:</strong> Común y generalmente legítimo en emojis.</td>
+          </tr>
+          <tr>
+            <td colspan="4" style="background: #f9f9f9; text-align: center; font-weight: bold; padding: 8px;">
+              Y más... (total de 30+ caracteres detectables)
+            </td>
           </tr>
         </table>
+
+        <p><strong>Actualización 2025:</strong> La herramienta ahora detecta 30+ tipos de caracteres invisibles, incluyendo espacios Unicode tipográficos, variantes de selección, y caracteres reportados en modelos razonadores modernos.</p>
         
         <p>La detección de estos caracteres puede ser una forma efectiva de identificar contenido generado por IA, aunque no es concluyente por sí misma.</p>
         <p>Herramienta desarrollada por <a href="https://github.com/686f6c61" target="_blank">686f6c61</a></p>
@@ -242,7 +319,7 @@
 
     <!-- Pie de página con enlaces a redes sociales -->
     <div class="footer">
-      <p>Detector de caracteres invisibles - Abril 2025</p>
+      <p>Detector de caracteres invisibles - 2025</p>
       <div class="social-icons">
         <a href="https://github.com/686f6c61/artificial-intelligence-text-detector-unicode" target="_blank" title="GitHub">
           <svg class="icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
