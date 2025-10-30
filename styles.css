@@ -124,6 +124,21 @@ body {
   line-height: 1.2;
 }
 
+/* Botón DEMO destacado */
+#demoBtn {
+  background: #000;
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 3px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+#demoBtn:hover {
+  background: #333;
+}
+
 /* ====== Editor de texto y numeración de líneas ====== */
 .editor {
   padding: 10px;
@@ -242,6 +257,39 @@ button:hover {
   min-width: 240px;
 }
 
+/* Botón secundario (estilo alternativo) */
+.action-button.secondary {
+  background: #fff;
+  color: #000;
+  border: 2px solid #000;
+  min-width: 200px;
+}
+
+.action-button.secondary:hover {
+  background: #f0f0f0;
+}
+
+/* Selector de formato de exportación */
+.export-format-selector {
+  padding: 8px 12px;
+  font-size: 14px;
+  font-family: "Consolas", "Courier New", monospace;
+  background: #fff;
+  color: #000;
+  border: 1px solid #000;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.export-format-selector:hover {
+  background: #f0f0f0;
+}
+
+.export-format-selector:focus {
+  outline: 2px solid #000;
+  outline-offset: 2px;
+}
+
 /* Botones de solo icono */
 .icon-only-button {
   display: flex;
@@ -310,6 +358,15 @@ button:hover {
 
 .char-name {
   font-weight: bold;
+  color: #000;
+  text-decoration: underline;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.char-name:hover {
+  color: #0066cc;
+  text-decoration: underline;
 }
 
 /* Botones de posición para navegar a caracteres invisibles */
@@ -494,4 +551,146 @@ button:hover {
 .copy-notification.show {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* ====== Estilos para análisis estadístico ====== */
+.analysis-stats {
+  margin-bottom: 15px;
+  padding: 10px;
+  background: #f0f0f0;
+  border: 1px solid #000;
+}
+
+.stats-detail {
+  display: flex;
+  gap: 20px;
+  margin-top: 8px;
+  font-size: 12px;
+  flex-wrap: wrap;
+}
+
+.stats-detail span {
+  background: #fff;
+  padding: 4px 8px;
+  border: 1px solid #000;
+}
+
+/* Evaluación de automatización */
+.automation-assessment {
+  margin: 15px 0;
+  padding: 12px;
+  border: 2px solid #000;
+  background: #fff;
+}
+
+.automation-assessment.alta {
+  border-color: #d00;
+  background: #fff5f5;
+}
+
+.automation-assessment.moderada {
+  border-color: #f90;
+  background: #fff9f0;
+}
+
+.automation-assessment.posible {
+  border-color: #990;
+  background: #fffef0;
+}
+
+.automation-details {
+  margin-top: 8px;
+  font-size: 13px;
+}
+
+.automation-details > div {
+  margin: 6px 0;
+}
+
+.likelihood-alta {
+  font-weight: bold;
+  color: #d00;
+}
+
+.likelihood-moderada {
+  font-weight: bold;
+  color: #f90;
+}
+
+.likelihood-posible {
+  font-weight: bold;
+  color: #990;
+}
+
+.likelihood-incierta {
+  font-weight: bold;
+  color: #666;
+}
+
+.signals {
+  margin-top: 8px;
+}
+
+.signals ul {
+  margin: 5px 0;
+  padding-left: 25px;
+}
+
+.signals li {
+  margin: 3px 0;
+  font-size: 12px;
+}
+
+.disclaimer {
+  margin-top: 10px;
+  font-size: 11px;
+  font-style: italic;
+  color: #666;
+  border-top: 1px solid #ccc;
+  padding-top: 8px;
+}
+
+/* ====== Heatmap de distribución ====== */
+.heatmap-container {
+  margin: 15px 0;
+  padding: 15px;
+  border: 1px solid #000;
+  background: #fff;
+}
+
+.heatmap-description {
+  margin: 5px 0 10px 0;
+  font-size: 12px;
+  color: #666;
+}
+
+#heatmapCanvas {
+  width: 100%;
+  height: 120px;
+  border: 2px solid #000;
+  cursor: pointer;
+  display: block;
+  margin: 10px 0;
+  background: #fff;
+}
+
+.heatmap-legend {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+  font-size: 12px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.legend-color {
+  display: inline-block;
+  width: 20px;
+  height: 12px;
+  border: 1px solid #000;
 } 
