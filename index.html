@@ -42,7 +42,7 @@
       <div class="dropdown">
         <span>Archivo</span>
         <div class="dropdown-content">
-          <a href="https://github.com/686f6c61/artificial-intelligence-text-detector-unicode" target="_blank">Descargar repo</a>
+          <a href="https://github.com/686f6c61/ai-unicode-detector" target="_blank">Descargar repo</a>
         </div>
       </div>
       <div class="menu-item">
@@ -311,8 +311,40 @@
         </table>
 
         <p><strong>Actualización 2025:</strong> La herramienta ahora detecta 30+ tipos de caracteres invisibles, incluyendo espacios Unicode tipográficos, variantes de selección, y caracteres reportados en modelos razonadores modernos.</p>
-        
+
         <p>La detección de estos caracteres puede ser una forma efectiva de identificar contenido generado por IA, aunque no es concluyente por sí misma.</p>
+
+        <h3>📰 Artículos relacionados</h3>
+
+        <p>Estos artículos refuerzan la importancia de detectar caracteres Unicode invisibles en texto generado por IA y sus implicaciones de seguridad:</p>
+
+        <p><strong>Ataques y vulnerabilidades (2024-2025):</strong></p>
+        <ul>
+          <li><a href="https://arstechnica.com/security/2024/10/ai-chatbots-can-read-and-write-invisible-text-creating-an-ideal-covert-channel/" target="_blank">AI chatbots can read and write invisible text, creating an ideal covert channel</a> - Ars Technica documenta cómo los LLMs pueden interpretar y generar caracteres invisibles del bloque Tags Unicode, creando canales encubiertos para exfiltrar información sensible.</li>
+
+          <li><a href="https://www.promptfoo.dev/blog/invisible-unicode-threats/" target="_blank">The Invisible Threat: How Zero-Width Unicode Characters Can Silently Backdoor Your AI-Generated Code</a> - Análisis sobre cómo caracteres invisibles pueden introducir backdoors en código generado por IA.</li>
+
+          <li><a href="https://www.bleepingcomputer.com/news/security/phishing-attack-hides-javascript-using-invisible-unicode-trick/" target="_blank">Phishing attack hides JavaScript using invisible Unicode trick</a> - BleepingComputer reporta ataques de phishing en enero 2025 que utilizan caracteres Hangul invisibles (U+FFA0, U+3164) para ofuscar JavaScript malicioso.</li>
+
+          <li><a href="https://www.trendmicro.com/en_us/research/25/a/invisible-prompt-injection-secure-ai.html" target="_blank">Invisible Prompt Injection: A Threat to AI Security</a> - Trend Micro explica cómo atacantes usan caracteres invisibles para manipular respuestas de LLMs de forma encubierta.</li>
+        </ul>
+
+        <p><strong>Watermarking y detección (2025):</strong></p>
+        <ul>
+          <li><a href="https://www.rumidocs.com/newsroom/new-chatgpt-models-seem-to-leave-watermarks-on-text" target="_blank">New ChatGPT models seem to leave watermarks on text</a> - Rumi descubre que modelos o3/o4-mini insertan U+202F sistemáticamente. OpenAI confirmó que es un bug de RL, no una marca de agua intencional.</li>
+
+          <li><a href="https://winbuzzer.com/2025/04/21/openais-new-o3-o4-mini-models-add-invisible-characters-to-text-sparking-watermark-debate-xcxwbn/" target="_blank">OpenAI's New o3/o4-mini Models Add Invisible Characters to Text, Sparking Watermark Debate</a> - WinBuzzer analiza el debate sobre si los caracteres invisibles son marcas de agua o artefactos no intencionados.</li>
+
+          <li><a href="https://clemensjarnach.github.io/02-articles/2025-04-24-article.html" target="_blank">Find Invisible Unicode Characters aka "AI Watermarks"</a> - Guía técnica para detectar y analizar caracteres invisibles en texto de IA.</li>
+        </ul>
+
+        <p><strong>Impacto en seguridad:</strong></p>
+        <ul>
+          <li><a href="https://blackswan-cybersecurity.com/emerging-threat-invisible-unicode-phishing-attacks/" target="_blank">Emerging Threat: Invisible Unicode Phishing Attacks</a> - Blackswan Cybersecurity documenta cómo atacantes usan Zero-Width Joiners y Soft Hyphens para evadir filtros de seguridad.</li>
+
+          <li><a href="https://community.openai.com/t/gpt-4-1-character-encoding-issues/1236017" target="_blank">GPT-4.1 Character Encoding Issues</a> - Discusión en la comunidad de OpenAI sobre problemas de codificación de caracteres en GPT-4.1.</li>
+        </ul>
+
         <p>Herramienta desarrollada por <a href="https://github.com/686f6c61" target="_blank">686f6c61</a></p>
       </div>
     </div>
@@ -321,7 +353,7 @@
     <div class="footer">
       <p>Detector de caracteres invisibles - 2025</p>
       <div class="social-icons">
-        <a href="https://github.com/686f6c61/artificial-intelligence-text-detector-unicode" target="_blank" title="GitHub">
+        <a href="https://github.com/686f6c61/ai-unicode-detector" target="_blank" title="GitHub">
           <svg class="icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.387.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.756-1.333-1.756-1.09-.745.083-.73.083-.73 1.205.085 1.838 1.236 1.838 1.236 1.07 1.835 2.807 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.4 3-.405 1.02.005 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.605-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12"/>
           </svg>

@@ -213,10 +213,30 @@ Este proyecto está licenciado bajo la Licencia MIT. Consulte el archivo LICENSE
 
 ## 📰 Artículos relacionados
 
-Estos artículos refuerzan la importancia de detectar caracteres Unicode invisibles en texto generado por IA:
+Estos artículos refuerzan la importancia de detectar caracteres Unicode invisibles en texto generado por IA y sus implicaciones de seguridad:
 
-- [AI chatbots can read and write invisible text, creating an ideal covert channel](https://arstechnica.com/security/2024/10/ai-chatbots-can-read-and-write-invisible-text-creating-an-ideal-covert-channel/) - Ars Technica explica cómo los LLMs pueden interpretar y generar caracteres invisibles, creando potenciales canales encubiertos para ataques.
-- [New ChatGPT models seem to leave watermarks on text](https://www.rumidocs.com/newsroom/new-chatgpt-models-seem-to-leave-watermarks-on-text) - Análisis sobre posibles "marcas de agua" invisibles que los modelos recientes de OpenAI podrían estar insertando en sus salidas.
+### Ataques y vulnerabilidades (2024-2025)
+
+- [AI chatbots can read and write invisible text, creating an ideal covert channel](https://arstechnica.com/security/2024/10/ai-chatbots-can-read-and-write-invisible-text-creating-an-ideal-covert-channel/) - Ars Technica documenta cómo los LLMs pueden interpretar y generar caracteres invisibles del bloque Tags Unicode, creando canales encubiertos para exfiltrar información sensible.
+
+- [The Invisible Threat: How Zero-Width Unicode Characters Can Silently Backdoor Your AI-Generated Code](https://www.promptfoo.dev/blog/invisible-unicode-threats/) - Análisis sobre cómo caracteres invisibles pueden introducir backdoors en código generado por IA.
+
+- [Phishing attack hides JavaScript using invisible Unicode trick](https://www.bleepingcomputer.com/news/security/phishing-attack-hides-javascript-using-invisible-unicode-trick/) - BleepingComputer reporta ataques de phishing en enero 2025 que utilizan caracteres Hangul invisibles (U+FFA0, U+3164) para ofuscar JavaScript malicioso.
+
+- [Invisible Prompt Injection: A Threat to AI Security](https://www.trendmicro.com/en_us/research/25/a/invisible-prompt-injection-secure-ai.html) - Trend Micro explica cómo atacantes usan caracteres invisibles para manipular respuestas de LLMs de forma encubierta.
+
+### Watermarking y detección (2025)
+
+- [New ChatGPT models seem to leave watermarks on text](https://www.rumidocs.com/newsroom/new-chatgpt-models-seem-to-leave-watermarks-on-text) - Rumi descubre que modelos o3/o4-mini insertan U+202F sistemáticamente. OpenAI confirmó que es un bug de RL, no una marca de agua intencional.
+
+- [OpenAI's New o3/o4-mini Models Add Invisible Characters to Text, Sparking Watermark Debate](https://winbuzzer.com/2025/04/21/openais-new-o3-o4-mini-models-add-invisible-characters-to-text-sparking-watermark-debate-xcxwbn/) - WinBuzzer analiza el debate sobre si los caracteres invisibles son marcas de agua o artefactos no intencionados.
+
+- [Find Invisible Unicode Characters aka "AI Watermarks"](https://clemensjarnach.github.io/02-articles/2025-04-24-article.html) - Guía técnica para detectar y analizar caracteres invisibles en texto de IA.
+
+### Impacto en seguridad
+
+- [Emerging Threat: Invisible Unicode Phishing Attacks](https://blackswan-cybersecurity.com/emerging-threat-invisible-unicode-phishing-attacks/) - Blackswan Cybersecurity documenta cómo atacantes usan Zero-Width Joiners y Soft Hyphens para evadir filtros de seguridad.
+
 - [GPT-4.1 Character Encoding Issues](https://community.openai.com/t/gpt-4-1-character-encoding-issues/1236017) - Discusión en la comunidad de OpenAI sobre problemas de codificación de caracteres en GPT-4.1.
 
 ## 👤 Autor
